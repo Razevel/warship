@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Sheep.php';
+require_once 'SoloSheep.php';
 
 class Game 
 {
@@ -24,10 +24,10 @@ class Game
 
 	    $sheeps = [
 	      	[
-		        new Sheep($this->map),
-		        new Sheep($this->map),
-		        new Sheep($this->map),
-		        new Sheep($this->map),
+		        new SoloSheep($this->map),
+		        new SoloSheep($this->map),
+		        new SoloSheep($this->map),
+		        new SoloSheep($this->map),
 	      	],
 	    ];
 
