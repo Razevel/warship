@@ -1,6 +1,7 @@
 <?php
 
 require_once 'SoloSheep.php';
+require_once 'DouSheep.php';
 
 class Game 
 {

@@ -1,29 +1,33 @@
 <?php
 
 /**
-* 
+* Базовый класс для кораблей, описывает одну ячейку (?палубу?).
 */
 class Sheep
 {
-  
+  	
 	const LEFT  = 1;
- 	const RIGHT = 2;
-  	const UP  = 3;
+  	const UP  	= 2;
+ 	const RIGHT = 3;
   	const DOWN  = 4;
 
   	protected $prev;
   	protected $next;
 
-  	public $x, $y;
+  	protected $position;
 
   	function __construct()
   	{
-		$this->x = 0;
-		$this->y = 0;
+		$this->position = [
+			'x' => 0,
+			'y' => 0,
+		];
   	}
 
   	/*
   	*
+  	* !!! ОСТОРОЖНО, МОЖЕТ БЫТЬ БОЛЬНО !!!
+  	* 
   	* Валидация текущей позиции корабля. Вызывается после получения рандомных координат
   	* Если расположение не нарушает правил, возвращает true, иначе false.
   	* Проверяет где находится поле, чтобы провильно построить цикл,
@@ -38,11 +42,11 @@ class Sheep
   	*  	карту с расположением кораблей (00101 и тд), на которую не нанесено 
   	*   проверяемое поле (часть корабля).
   	*/
-  	public function validate(&$map, $coords)
+  	public function validate(&$map)
   	{
 		// Коры проверяемого поля 
-		$x = $coords[0];
-		$y = $coords[1];
+		$x = $this->position['x'];
+		$y = $this->position['y'];
 
 		// Если поле не на краях карты
 		if( $x>0 && $y>0 && $x<9 && $y<9 ) {
@@ -109,8 +113,8 @@ class Sheep
 		for ( $i = $a[0]; $i <= $a[1]; $i++ ) { 
 		  	for ( $j = $b[0]; $j <= $b[1]; $j++ ) 
 		  	{ 
-				if ( ( $this->prev && $i == $this->prev->x && $j == $this->prev->y ) || 
-					 ( $this->next && $i == $this->next->x && $j == $this->next->y ) ) 
+				if ( ( $this->prev && $i == $this->prev->position['x'] && $j == $this->prev->position['y'] ) || 
+					 ( $this->next && $i == $this->next->position['x'] && $j == $this->next->position['y'] ) ) 
 					continue;	
 			
 				if($map[$i][$j] == 1)
@@ -119,5 +123,7 @@ class Sheep
 		}
 		return true;
   	}
+
+
 
 }

@@ -6,7 +6,6 @@ include 'Game.php';
 $game = new Game();
 
 $game->fillMap();
-$game->showMap();
 
 $map = $game->map;
 ?>

@@ -13,11 +13,13 @@ class SoloSheep extends Sheep
     
 	    parent::__construct();
 	    do {
-	      	$this->x = rand(0, 9);
-	      	$this->y = rand(0, 9);
-	    }while ( !$this->validate($map, [$this->x, $this->y]) );
+	      	$this->position = [
+	      		'x' => rand(0, 9),
+	      		'y' => rand(0, 9),
+	      	];
+	    }while ( !$this->validate($map) );
 
-	    $map[$this->x][$this->y] = 1;
+	    $map[$this->position['x']][$this->position['y']] = 1;
   	}
 
 }
