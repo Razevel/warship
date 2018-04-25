@@ -15,13 +15,11 @@ class SoloSheep
     	$this->node = new Sheep();
 	    
 	    do {
-	      	$this->node->position = [
-	      		'x' => rand(0, 9),
-	      		'y' => rand(0, 9),
-	      	];
+	      	$this->node->x = rand(0, 9);
+	      	$this->node->y = rand(0, 9);
 	    }while ( !$this->node->validate($map) );
 
-	    $map[$this->node->position['x']][$this->node->position['y']] = 1;
+	    $map[$this->node->x][$this->node->y] = 1;
   	}
 
 }

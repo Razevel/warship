@@ -14,14 +14,13 @@ class Sheep
   	public $prev;
   	public $next;
 
-  	public $position;
+  	public $x;
+  	public $y;
 
   	function __construct()
   	{
-		$this->position = [
-			'x' => 0,
-			'y' => 0,
-		];
+		$this->x = 0;
+		$this->y = 0;
   	}
 
   	/*
@@ -47,8 +46,8 @@ class Sheep
   		
 
 		// Коры проверяемого поля 
-		$x = $this->position['x'];
-		$y = $this->position['y'];
+		$x = $this->x;
+		$y = $this->y;
 
 		// Если поле не на краях карты
 		if( $x>0 && $y>0 && $x<9 && $y<9 ) {
@@ -115,8 +114,8 @@ class Sheep
 		for ( $i = $a[0]; $i <= $a[1]; $i++ ) { 
 		  	for ( $j = $b[0]; $j <= $b[1]; $j++ ) 
 		  	{ 
-				if ( ( $this->prev && $i == $this->prev->position['x'] && $j == $this->prev->position['y'] ) || 
-					 ( $this->next && $i == $this->next->position['x'] && $j == $this->next->position['y'] ) ) 
+				if ( ( $this->prev && $i == $this->prev->x && $j == $this->prev->y ) || 
+					 ( $this->next && $i == $this->next->x && $j == $this->next->y ) ) 
 					continue;	
 			
 				if($map[$i][$j] == 1)
@@ -126,21 +125,12 @@ class Sheep
 		return true;
   	}
 
-  	public function getSide($pos = null)
+  	public function getSide()
   	{
-  		if(!$pos){
-  			if( isset($this->position[0]) ){
-  				$x = $this->position[0]['x'];
-  				$y = $this->position[0]['y'];
-  			}else{
-  				$x = $this->position['x'];
-  				$y = $this->position['y'];
-  			}
-  		}else{
-  			$x = $position['x'];
-  			$y = $position['y'];
-  		}
-
+  		
+  		$x = $this->x;
+  		$y = $this->y;
+  		
   		$side = rand(self::LEFT, self::DOWN);
 
 	    // Если поле не на краях карты

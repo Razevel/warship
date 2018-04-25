@@ -8,7 +8,11 @@ class Game
 	public $map;
 	public $sheeps;
 
-	public function fillMap()
+	public function Game(){
+		$this->fillMap();
+	}
+
+	private function fillMap()
 	{
 	    $this->map = [
 	      	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -32,6 +36,10 @@ class Game
 	      	],
 	      	[
 	      		new DuoSheep($this->map),
+	      		new DuoSheep($this->map),
+	      		new DuoSheep($this->map),
+	      	],
+	      	[
 	      	],
 	    ];
 

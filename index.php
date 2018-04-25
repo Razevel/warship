@@ -4,9 +4,6 @@
 include 'Game.php';
 
 $game = new Game();
-
-$game->fillMap();
-
 $map = $game->map;
 ?>
 
@@ -19,7 +16,6 @@ $map = $game->map;
   <link rel="stylesheet" type="text/css" href="site.css">
 </head>
 <body>
-  <?=$game->showMap() ?>
   <div class="wrapper">
     <div class="field">
       <?php foreach($map as $line):?>

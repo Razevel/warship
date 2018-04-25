@@ -18,51 +18,36 @@ class DuoSheep
 	    	$x = rand(0, 9);
 	    	$y = rand(0, 9);
 	    	
-	      	$this->nodes[0]->position = [
-	      		'x' => $x,
-	      		'y' => $y,
-	      	];			
+	      	$this->nodes[0]->x = $x;
+	      	$this->nodes[0]->y = $y;
 
 			switch ($this->nodes[0]->getSide()) {
 				case Sheep::LEFT:
-					echo "<-";
-					$this->nodes[1]->position = [
-						'x' => $x,
-						'y' => --$y,
-					];
+					$this->nodes[1]->x = $x;
+	      			$this->nodes[1]->y = --$y;
 					break;
 				case Sheep::UP:
-					echo "^";
-					$this->nodes[1]->position = [
-						'x' => --$x,
-						'y' => $y,
-					];
+					$this->nodes[1]->x = --$x;
+	      			$this->nodes[1]->y = $y;
 					break;
 				case Sheep::RIGHT:
-					echo "->";
-
-					$this->nodes[1]->position = [
-						'x' => $x,
-						'y' => ++$y,
-					];
+					$this->nodes[1]->x = $x;
+	      			$this->nodes[1]->y = ++$y;
 					break;
 				case Sheep::DOWN:
-					echo "\/";
-
-					$this->nodes[1]->position = [
-						'x' => ++$x,
-						'y' => $y,
-					];
+					$this->nodes[1]->x = ++$x;
+	      			$this->nodes[1]->y = $y;
 					break;
 			}
 			$this->nodes[0]->next = $this->nodes[1];
 			$this->nodes[1]->prev = $this->nodes[0];
 
 
-	    }while ( false);
-	    var_dump($this->nodes[0]);die;
-	    die();
-	    $map[$this->position[0]['x']][$this->position[0]['y']] = 1;
+	    }while ( !$this->nodes[0]->validate($map) || !$this->nodes[1]->validate($map) );
+	    
+	   
+	    $map[$this->nodes[0]->x][$this->nodes[0]->y] = 1;
+	    $map[$this->nodes[1]->x][$this->nodes[1]->y] = 1;
     }
 
 }
