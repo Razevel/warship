@@ -1,6 +1,6 @@
 <?php
 
-
+ini_set("memory_limit","512M");
 include 'Game.php';
 
 $game = new Game();

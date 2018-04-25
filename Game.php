@@ -2,6 +2,7 @@
 
 require_once 'SoloShip.php';
 require_once 'DuoShip.php';
+require_once 'TripleShip.php';
 
 class Game 
 {
@@ -40,6 +41,8 @@ class Game
 	      		new DuoShip($this->map),
 	      	],
 	      	[
+	      		new TripleShip($this->map),
+	      		new TripleShip($this->map),
 	      	],
 	    ];
 

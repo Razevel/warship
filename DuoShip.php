@@ -2,6 +2,11 @@
 
 require_once 'Ship.php';
 
+
+
+/**
+* Двухпалубный корабль
+*/
 class DuoShip 
 {
 	public $nodes;
