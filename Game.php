@@ -1,7 +1,7 @@
 <?php
 
-require_once 'SoloSheep.php';
-require_once 'DuoSheep.php';
+require_once 'SoloShip.php';
+require_once 'DuoShip.php';
 
 class Game 
 {
@@ -29,15 +29,15 @@ class Game
 
 	    $sheeps = [
 	      	[
-		        new SoloSheep($this->map),
-		        new SoloSheep($this->map),
-		        new SoloSheep($this->map),
-		        new SoloSheep($this->map),
+		        new SoloShip($this->map),
+		        new SoloShip($this->map),
+		        new SoloShip($this->map),
+		        new SoloShip($this->map),
 	      	],
 	      	[
-	      		new DuoSheep($this->map),
-	      		new DuoSheep($this->map),
-	      		new DuoSheep($this->map),
+	      		new DuoShip($this->map),
+	      		new DuoShip($this->map),
+	      		new DuoShip($this->map),
 	      	],
 	      	[
 	      	],

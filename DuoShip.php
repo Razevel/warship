@@ -1,16 +1,16 @@
 <?php
 
-require_once 'Sheep.php';
+require_once 'Ship.php';
 
-class DuoSheep 
+class DuoShip 
 {
 	public $nodes;
 
-  	function DuoSheep(&$map)
+  	function DuoShip(&$map)
   	{
   		$this->nodes = [
-  			new Sheep(),
-  			new Sheep(),  			
+  			new Ship(),
+  			new Ship(),  			
   		];
   		
 	    do {
@@ -22,19 +22,19 @@ class DuoSheep
 	      	$this->nodes[0]->y = $y;
 
 			switch ($this->nodes[0]->getSide()) {
-				case Sheep::LEFT:
+				case Ship::LEFT:
 					$this->nodes[1]->x = $x;
 	      			$this->nodes[1]->y = --$y;
 					break;
-				case Sheep::UP:
+				case Ship::UP:
 					$this->nodes[1]->x = --$x;
 	      			$this->nodes[1]->y = $y;
 					break;
-				case Sheep::RIGHT:
+				case Ship::RIGHT:
 					$this->nodes[1]->x = $x;
 	      			$this->nodes[1]->y = ++$y;
 					break;
-				case Sheep::DOWN:
+				case Ship::DOWN:
 					$this->nodes[1]->x = ++$x;
 	      			$this->nodes[1]->y = $y;
 					break;

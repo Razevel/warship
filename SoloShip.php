@@ -1,18 +1,18 @@
 <?php
 
-require_once 'Sheep.php';
+require_once 'Ship.php';
 
 /**
 * Однопалубный корабль
 */
-class SoloSheep
+class SoloShip
 {
 
 	public $node;
 
-  	function SoloSheep(&$map)
+  	function SoloShip(&$map)
   	{
-    	$this->node = new Sheep();
+    	$this->node = new Ship();
 	    
 	    do {
 	      	$this->node->x = rand(0, 9);

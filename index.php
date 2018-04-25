@@ -22,7 +22,7 @@ $map = $game->map;
         <?php foreach($line as $cell):?>
           <div class="cell">
           <?php if($cell): ?>
-          <img src="sheep.png" class="sheep-icon" >
+          <img src="ship.png" class="ship-icon" >
           <?php endif ?>
           </div>
         <?php endforeach?>
