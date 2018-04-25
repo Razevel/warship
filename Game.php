@@ -1,7 +1,7 @@
 <?php
 
 require_once 'SoloSheep.php';
-require_once 'DouSheep.php';
+require_once 'DuoSheep.php';
 
 class Game 
 {
@@ -29,6 +29,9 @@ class Game
 		        new SoloSheep($this->map),
 		        new SoloSheep($this->map),
 		        new SoloSheep($this->map),
+	      	],
+	      	[
+	      		new DuoSheep($this->map),
 	      	],
 	    ];
 

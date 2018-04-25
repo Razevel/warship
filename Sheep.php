@@ -11,10 +11,10 @@ class Sheep
  	const RIGHT = 3;
   	const DOWN  = 4;
 
-  	protected $prev;
-  	protected $next;
+  	public $prev;
+  	public $next;
 
-  	protected $position;
+  	public $position;
 
   	function __construct()
   	{
@@ -44,6 +44,8 @@ class Sheep
   	*/
   	public function validate(&$map)
   	{
+  		
+
 		// Коры проверяемого поля 
 		$x = $this->position['x'];
 		$y = $this->position['y'];
@@ -124,6 +126,88 @@ class Sheep
 		return true;
   	}
 
+  	public function getSide($pos = null)
+  	{
+  		if(!$pos){
+  			if( isset($this->position[0]) ){
+  				$x = $this->position[0]['x'];
+  				$y = $this->position[0]['y'];
+  			}else{
+  				$x = $this->position['x'];
+  				$y = $this->position['y'];
+  			}
+  		}else{
+  			$x = $position['x'];
+  			$y = $position['y'];
+  		}
 
+  		$side = rand(self::LEFT, self::DOWN);
+
+	    // Если поле не на краях карты
+		if( $x>0 && $y>0 && $x<9 && $y<9 ) {
+			$side = rand(self::LEFT, self::DOWN);
+		}elseif( $y>0 && $y<9 ) {
+			// Верхняя граница
+			if( $x == 0 )
+			{
+				while ($side == self::UP) {
+					$side = rand(self::LEFT, self::DOWN);
+				}
+			}
+			// Нижняя граница
+			elseif( $x == 9 )
+			{
+				while ($side == self::DOWN) {
+					$side = rand(self::LEFT, self::DOWN);
+				}
+			} 
+		}elseif ($x>0 && $x<9) {
+			// Левая граница
+			if( $y == 0 )
+			{
+				while ($side == self::LEFT) {
+					$side = rand(self::LEFT, self::DOWN);
+				}
+			}
+			// Правая граница
+			elseif( $y == 9 )
+			{
+				while ($side == self::RIGHT) {
+					$side = rand(self::LEFT, self::DOWN);
+				}
+			} 
+		}elseif ($x == 0) {
+			// Левый верхний угол
+			if( $y == 0 )
+			{
+				while (($side == self::UP) || ($side == self::LEFT)) {
+					$side = rand(self::LEFT, self::DOWN);
+				}
+			}
+			// Правый верхний угол
+			elseif( $y == 9 )
+			{
+				while (($side == self::UP) || ($side == self::RIGHT)) {
+					$side = rand(self::LEFT, self::DOWN);
+				}
+		  	}
+		}elseif ( $x == 9 ) {
+			// Левый нижний угол
+		  	if( $y == 0 )
+		  	{
+				while (($side == self::DOWN) || ($side == self::LEFT)) {
+					$side = rand(self::LEFT, self::DOWN);
+				}
+			}
+			// Правый нижний угол
+			elseif( $y == 9 )
+			{
+				while (($side == self::DOWN) || ($side == self::RIGHT)) {
+					$side = rand(self::LEFT, self::DOWN);
+				}
+			}
+		}
+		return $side;
+  	}
 
 }

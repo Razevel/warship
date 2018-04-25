@@ -5,21 +5,23 @@ require_once 'Sheep.php';
 /**
 * Однопалубный корабль
 */
-class SoloSheep extends Sheep
+class SoloSheep
 {
+
+	public $node;
 
   	function SoloSheep(&$map)
   	{
-    
-	    parent::__construct();
+    	$this->node = new Sheep();
+	    
 	    do {
-	      	$this->position = [
+	      	$this->node->position = [
 	      		'x' => rand(0, 9),
 	      		'y' => rand(0, 9),
 	      	];
-	    }while ( !$this->validate($map) );
+	    }while ( !$this->node->validate($map) );
 
-	    $map[$this->position['x']][$this->position['y']] = 1;
+	    $map[$this->node->position['x']][$this->node->position['y']] = 1;
   	}
 
 }

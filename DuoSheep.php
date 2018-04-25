@@ -1,31 +1,68 @@
 <?php
 
 require_once 'Sheep.php';
-class DuoSheep extends Sheep
+
+class DuoSheep 
 {
+	public $nodes;
 
   	function DuoSheep(&$map)
   	{
-  		parent::__construct();
+  		$this->nodes = [
+  			new Sheep(),
+  			new Sheep(),  			
+  		];
+  		
 	    do {
 
 	    	$x = rand(0, 9);
 	    	$y = rand(0, 9);
 	    	
-	      	$this->position = [
-	      		[
-	      			'x' => $x,
-	      			'y' => $y,
-	      		],
-	      	];
+	      	$this->nodes[0]->position = [
+	      		'x' => $x,
+	      		'y' => $y,
+	      	];			
 
-	      	
-	      	
+			switch ($this->nodes[0]->getSide()) {
+				case Sheep::LEFT:
+					echo "<-";
+					$this->nodes[1]->position = [
+						'x' => $x,
+						'y' => --$y,
+					];
+					break;
+				case Sheep::UP:
+					echo "^";
+					$this->nodes[1]->position = [
+						'x' => --$x,
+						'y' => $y,
+					];
+					break;
+				case Sheep::RIGHT:
+					echo "->";
 
-	      	
-	    }while ( !$this->validate($map) );
+					$this->nodes[1]->position = [
+						'x' => $x,
+						'y' => ++$y,
+					];
+					break;
+				case Sheep::DOWN:
+					echo "\/";
 
-	    $map[$this->x][$this->y] = 1;
+					$this->nodes[1]->position = [
+						'x' => ++$x,
+						'y' => $y,
+					];
+					break;
+			}
+			$this->nodes[0]->next = $this->nodes[1];
+			$this->nodes[1]->prev = $this->nodes[0];
+
+
+	    }while ( false);
+	    var_dump($this->nodes[0]);die;
+	    die();
+	    $map[$this->position[0]['x']][$this->position[0]['y']] = 1;
     }
 
 }
