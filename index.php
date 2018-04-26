@@ -1,5 +1,5 @@
 <?php
-define('__DEBUG__', 'true');
+// define('__DEBUG__', 'true');
 
 ini_set("memory_limit","512M");
 include 'Game.php';
