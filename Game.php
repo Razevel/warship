@@ -1,21 +1,47 @@
 <?php
 
-require_once 'SoloShip.php';
-require_once 'DuoShip.php';
-require_once 'TripleShip.php';
-require_once 'FourDeckShip.php';
 
+require_once 'Ship.php';
+
+/*
+* Главный класс игры, заполняет карту.
+*/
 class Game 
 {
+	//Карта
 	public $map;
-	public $sheeps;
+
+	//Корабли
+	public $ships;
 	
 	public function Game(){
 		$this->fillMap();
 	}
 
 	private function fillMap()
-	{
+	{ 	
+		// Создает пустую карту 10х10 заполненую нулями.
+		$this->map = [];
+		for ($i=0; $i < 10; $i++) { 
+			$tmp = [];
+			for ($j=0; $j < 10; $j++) { 
+				$tmp[] = 0;
+			}
+			$this->map[] = $tmp;
+		}
+
+		/* Создает корабли на карте */
+		$this->ships = [];
+
+	    for ($i=0; $i < 4; $i++) { 
+	    	$tmp = [];
+	    	for ($j=0; $j < (4-$i); $j++) { 
+	    		$tmp[] = new Ship($this->map, $i+1);
+	    	}
+	    	$this->ships[] = $tmp;
+	    }
+
+	    /*
 	    $this->map = [
 	      	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 	      	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -29,38 +55,28 @@ class Game
 	      	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 	    ];
 
-	    $sheeps = [
+	    $ships = [
 	      	[
-		        new SoloShip($this->map),
-		        new SoloShip($this->map),
-		        new SoloShip($this->map),
-		        new SoloShip($this->map),
+	      		new Ship($this->map, 4),
 	      	],
 	      	[
-	      		new DuoShip($this->map),
-	      		new DuoShip($this->map),
-	      		new DuoShip($this->map),
+	      		new Ship($this->map, 3),
+	      		new Ship($this->map, 3),	      	 	
 	      	],
 	      	[
-	      	 	new TripleShip($this->map),
-	      	 	new TripleShip($this->map),
+	      		new Ship($this->map, 2),
+	      		new Ship($this->map, 2),
+	      		new Ship($this->map, 2),
 	      	],
 	      	[
-	      	 	new FourDeckShip($this->map),
-	      	],
+		        new Ship($this->map),
+		        new Ship($this->map),
+		        new Ship($this->map),
+		        new Ship($this->map),
+	      	],	      	
 	    ];
+	    */
 
 	}
-
-	public function showMap()
-	{
-		foreach ($this->map as $line) {
-		    foreach ($line as $cell) {
-		    	echo $cell . ' ';
-		    }
-	    	echo "<br/>";
-	    }
-	}
-
 
 }
