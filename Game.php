@@ -40,43 +40,6 @@ class Game
 	    	}
 	    	$this->ships[] = $tmp;
 	    }
-
-	    /*
-	    $this->map = [
-	      	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	      	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	      	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	      	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	      	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	      	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	      	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	      	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	      	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	      	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	    ];
-
-	    $ships = [
-	      	[
-	      		new Ship($this->map, 4),
-	      	],
-	      	[
-	      		new Ship($this->map, 3),
-	      		new Ship($this->map, 3),	      	 	
-	      	],
-	      	[
-	      		new Ship($this->map, 2),
-	      		new Ship($this->map, 2),
-	      		new Ship($this->map, 2),
-	      	],
-	      	[
-		        new Ship($this->map),
-		        new Ship($this->map),
-		        new Ship($this->map),
-		        new Ship($this->map),
-	      	],	      	
-	    ];
-	    */
-
 	}
 
 }
