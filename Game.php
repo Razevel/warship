@@ -8,7 +8,7 @@ class Game
 {
 	public $map;
 	public $sheeps;
-
+	
 	public function Game(){
 		$this->fillMap();
 	}
@@ -40,10 +40,10 @@ class Game
 	      		new DuoShip($this->map),
 	      		new DuoShip($this->map),
 	      	],
-	      	[
-	      		new TripleShip($this->map),
-	      		new TripleShip($this->map),
-	      	],
+	      	// [
+	      	// 	new TripleShip($this->map),
+	      	// 	new TripleShip($this->map),
+	      	// ],
 	    ];
 
 	}

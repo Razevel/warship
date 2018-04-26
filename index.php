@@ -1,7 +1,9 @@
 <?php
+define('__DEBUG__', 'true');
 
 ini_set("memory_limit","512M");
 include 'Game.php';
+
 
 $game = new Game();
 $map = $game->map;
@@ -12,7 +14,7 @@ $map = $game->map;
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>WarSheeps</title>
+  <title>WarShips</title>
   <link rel="stylesheet" type="text/css" href="site.css">
 </head>
 <body>
